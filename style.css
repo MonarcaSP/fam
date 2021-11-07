@@ -155,15 +155,6 @@ button:hover{
 	/* overflow-y: scroll; */	
 }
 
-/*Estrutura classes:
-filmes
-	card
-		modura
-			poster(pic)
-		selos
-			selo1
-			selo2
-			selo3*/
 	
 .filmes{			
 	padding: 10px 20px 5px 20px;

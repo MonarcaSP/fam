@@ -37,7 +37,6 @@ window.onload = function(){
 	suporteAdicionarGrupoCombo()
 }
 
-//Carregamento. Monta objeto de carga e status para buscas e filtros:
 class Base{
 	constructor(){
 		this.acervo = 0;		
@@ -60,7 +59,7 @@ class Base{
 		filme.chave = chave; 
 		filme.titulo = titulo;
 		filme.img = img;
-		filme.grupo = grupo; //usar pra url ou tags
+		filme.grupo = grupo; 
 		filme.generos = generos;
 		filme.exibe = exibe;
 		filme.print = print
@@ -69,31 +68,27 @@ class Base{
 	}	
 }
 
-// Cria array de filmes: base.filmes[]
 var base = new Base();
-// Modelo:
-// base.salvar('id', 'visto', 'watch', 'like', 'visto2', 'watch2', 'like2',
-// 'chave', 'titulo', 'img', 'grupo', 'generos', 'exibir', 'print');
-	// Popula o objeto:
+
 for (let i=0; i<listaImagens.length; i++){
-	base.salvar(listaImagens[i][0],		//id
-				listaImagens[i][1][2],	//va
-				listaImagens[i][1][8],	//wa
-				listaImagens[i][1][14], //la
-				listaImagens[i][1][5],	//vb
-				listaImagens[i][1][11],	//wb
-				listaImagens[i][1][17],	//lb
-				listaImagens[i][1], 	//chave
-				listaImagens[i][2], 	//titulo
-				listaImagens[i][3], 	//img
-				listaImagens[i][4], 	//grupo (criar tags? ou url)
-				listaImagens[i][5],		//generos (usar este combo)
-				1,						//exibe
-				true)					//print
+	base.salvar(listaImagens[i][0],		
+				listaImagens[i][1][2],	
+				listaImagens[i][1][8],	
+				listaImagens[i][1][14], 
+				listaImagens[i][1][5],	
+				listaImagens[i][1][11],	
+				listaImagens[i][1][17],	
+				listaImagens[i][1], 	
+				listaImagens[i][2], 	
+				listaImagens[i][3], 	
+				listaImagens[i][4], 	
+				listaImagens[i][5],		
+				1,						
+				true)					
 }
 
 function sincronizaBaseComStorage(){
-	//Assumindo que se não tem mafVisto, não tem nenhum para carga.
+	
 	if(localStorage.getItem('mafVisto') != null){		
 		
 		let storVisto = localStorage.getItem('mafVisto');
@@ -113,8 +108,7 @@ function sincronizaBaseComStorage(){
 		base.filmes[i].watch2 = storWatch2[i]==null ? '0' : storWatch2[i];
 		base.filmes[i].like2 = storLike2[i]==null ? '0' : storLike2[i];
 		base.filmes[i].chave = montaChave(i)[0]+montaChave(i)[1]+montaChave(i)[2];
-		}catch(err){
-			//Alguma chave não criada ou deletada.
+		}catch(err){			
 			// console.log(err.message);
 		}
 		}
@@ -355,11 +349,11 @@ function inv(flag){
 	}else if(flag==0){
 		return 1;
 	}else{
-		return 0; //Prevendo novas entradas manuais, onde ficará undefined.
+		return 0; 
 	}	
 }
 
-// Informações Estatísticas ======================================================================================
+
 
 function atualizarDados(){
 	let total = base.acervo;
@@ -394,7 +388,6 @@ function gravaLastAdicionado(title){
 	// }	
 // }
 
-//Seleção de Filtros: Olhando o DOM ==============================================================================
 
 function alterarCheckFade(){
 	fecharFiltros();
@@ -416,7 +409,7 @@ function abreTodos(){
 	document.getElementById('conta').textContent = contaPrint();
 	topoPagina();
 }
-	//Filtro Assistidos / Vistos == Olhando para o DOM
+	
 function abreVisto(ck){
 	fecharFiltros()
 	// localStorage.setItem("guiaAtiva", "Vistos");	
@@ -434,7 +427,7 @@ function abreVisto(ck){
 	document.getElementById('conta').textContent = contaPrint();
 	topoPagina();
 }
-	//Filtro Inéditos
+	
 function abreDesmarcado(){
 	fecharFiltros()
 	// localStorage.setItem("guiaAtiva", "Inéditos");	
@@ -452,7 +445,7 @@ function abreDesmarcado(){
 	document.getElementById('conta').textContent = contaPrint();
 	topoPagina();	
 }
-	//Filtro Watchlist
+	
 function abreWatchlist(ck){
 	fecharFiltros()
 	// localStorage.setItem("guiaAtiva", "Watchlist");		
@@ -470,7 +463,7 @@ function abreWatchlist(ck){
 	document.getElementById('conta').textContent = contaPrint();
 	topoPagina();
 }
-	//Filtro Gostei
+	
 function abreGostei(){
 	fecharFiltros()
 	// localStorage.setItem("guiaAtiva", "Gostei");	
@@ -508,8 +501,8 @@ function abreGostei(){
 	// document.getElementById('conta').textContent = contaPrint();	
 // }
 
-//Auxiliares: =====================================================================================
-	//Montar Div Modal
+
+
 function listaSelecao(){
 	// fecharFiltros();
 	fecharTools();
@@ -605,14 +598,13 @@ function abrirGuia(imagem){
 	fecharFiltros()
 }
 
-//Consultas / Filtros: ============================================================================
 
 function topoPagina(){
 	document.body.scrollTop = document.documentElement.scrollTop = 0;
 	// document.getElementById("titulo").focus();
 }
  
-	// Combobox:
+	
 function buscaGrupo(){
 	var comboGrupos = document.getElementById("cboGrupos");	
 	buscaGenreCombo(comboGrupos.value);	
@@ -673,7 +665,7 @@ function checkEnter(){
 	}
 }
 
-	//busca nos impressos, mas não disponibilizado.
+	
 function buscaGenre2(){
 	fecharFiltros()
 	let genre = prompt("Digite o gênero")
@@ -692,7 +684,7 @@ function buscaGenre2(){
 	document.getElementById('guia').textContent = "Busca Título: " + genre + ", achou " + n + ".";	
 }
 
-	//busca nos impressos, mas não disponibilizado.
+	
 function buscaTitulo2(){
 	fecharFiltros()
 	let titulo = prompt("Digite o título ou parte dele.")	
@@ -777,7 +769,7 @@ function contaGeneros(){
 			  + "<button onclick='location.reload()'><<< Voltar</button><br><br>" 
 			  + "<b>Estatísticas:</b><br><br>";
 	
-	// Funciona no console:
+	
 	// base.filmes.map(item => item.grupo).filter((value, index, self) => self.indexOf(value) === index);
 	const grupos = listaGrupos;
 	// let saida = "Estatísticas:\n"
@@ -820,7 +812,7 @@ function contaGeneros(){
 	document.body.innerHTML = htm;	
 }
 				
-//=================================================================================================
+
 
 function abreBackup(){
 	fecharTools();
