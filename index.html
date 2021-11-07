@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>faM3x</title>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" type="imagex/png" href="./logo.ico">	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+	<!-- <link rel="stylesheet" href="C:\tmp\fontawesome\css\all.css"> -->
+	<link rel="stylesheet" type="text/css" href="./style.css">	
+	<script type="text/javascript" src="./service.js"></script>
+	<!-- <script type="text/javascript" src=""></script> -->
+	<script type="text/javascript" src="./main.js"></script>	
+</head>
+
+<body>	
+	<nav class='menuFixo'>	
+		<div class='modal' id='frmFiltros' style='display: none;'>
+			Filtros			
+			<button onclick='abreTodos()'><i class="far fa-list-alt" title='Nenhum'></i></button>
+			<button onclick='abreVisto(1)'><i class="fas fa-check-circle" title='Visto'></i></button>			
+			<input type='checkbox' onclick='alterarCheckFade()' id='check' checked>
+			<label id='fade' for='check'>fade</label>			
+			<button onclick='abreVisto(0)'><i class="far fa-eye-slash" title='Inédito'></i></button>
+			<button onclick='abreWatchlist(1)'><i class="fas fa-plus-circle" title='Watchlist'></i></button>
+			<button onclick='abreWatchlist(0)'><i class="fas fa-border-none" title='Não Adicionado'></i></button>
+			<button onclick='abreDesmarcado()'><i class="far fa-eye-slash" title='Inédito e Não Adicionado'></i><i class="fas fa-border-none" title='Inédito e Não Adicionado'></i></button>
+			<button onclick='abreGostei()'><i class="fas fa-heart" title='Gostei'></i></button>
+			<button class='fecharModal' onclick='fecharFiltros()'>Fechar</button>		
+		</div>
+		<div class='modal' id='frmTools' style='display: none;'>
+			Tools			
+			<button onclick='contaGeneros()' title='Estatísticas'>Perfil</button>
+			<button onclick='listaSelecao()' title='Itens em exibição'>Listar</button>
+			<button onclick='resetarMarcadas()'>Resetar</button>		
+			<button onclick='abreBackup()'>Backup</button>
+			<button onclick='msgAjuda()'>Ajuda</button>
+			<button onclick='msgSobre()'>Sobre</button>
+			<button onclick='irContato()' title='Envie críticas e sugestões'>Contato</button>
+			<button class='fecharModal' onclick='fecharTools()'>Fechar</button>		
+		</div>
+		<div class='navPrincipal'>
+			<div class='navGeneros'>
+				<label>Pasta</label>
+				<select class='campo' id='cboGrupos' onchange='buscaGrupo()'>				
+					<option value=></option>				
+					<option value='watch'>Watchlist</option>
+					<option value='visto'>Visto</option>
+					<option value='inedito'>Inédito</option>
+					<option value='like'>Gostei</option>							
+					<option value='Novo'>Novidades</option>
+					<option value=>Todos os filmes</option>
+				</select>				
+			</div>
+			<div class='navBusca'>
+				<label>Busca</label>
+				<input class='campo' type="search" id="titulo" onkeyup='checkEnter()' placeholder="título">
+				<!-- <button id="btnBuscar" onclick='buscaTitulo()'>Pesquisar</button> -->
+			</div>
+			<div class='navFiltros'>
+				<button id="btnFiltros" onclick='abreFiltros()'>Filtros</button>
+				<!-- <button id="btnCross" onclick='buscaChave()'>Cross</button> -->
+				<button id="btnTools" onclick='abreTools()'>Tools</button>
+			</div>
+		</div>			
+		
+	</nav>	
+		<!-- Infos: -->
+	<div class='guiaAtiva'>
+		<div>Pasta <span id='guia'>Watchlist</span><span id='conta'></span></div>
+		<div>filtro: <span id='filtro'>nenhum</span></div>
+		<div class='textoImg'>Filmes MAF</div>
+	</div>
+
+	<div class='modalCaixa' id='modalDados' style='display: block;'>
+		<div class='modalGrupo'>
+			<div class='modalItem'>
+				<div>Catálogo Geral: <span id='resTotal'></span></div>
+				<div>Vistos: <span id='resVisto'></span></div>
+				<div>Adicionados: <span id='resWatch'></span></div>
+			</div>
+			<div class='modalItem'>Uso em Tools/Ajuda
+				<div>Busque por Pasta</div>
+				<div>Depois aplique filtros</div>
+			</div>
+			<div class='modalItem'>Últimas atividades:
+				<div>Assistiu <span id='resViu'></span></div>
+				<div>Incluiu <span id='resAdd'></span></div>				
+			</div>
+		</div>		
+	</div>
+	
+	<div class='filmes' id='resultado'>
+	</div>		
+	
+</body>
+		
+</html>
