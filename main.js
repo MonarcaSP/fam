@@ -609,7 +609,7 @@ function abrirGuia(imagem){
 
 function topoPagina(){
 	document.body.scrollTop = document.documentElement.scrollTop = 0;
-	document.getElementById("titulo").focus();
+	// document.getElementById("titulo").focus();
 }
  
 	// Combobox:
@@ -707,7 +707,9 @@ function buscaTitulo2(){
 			imagem[i].dataset.foco='0';
 		}
 	}	
-	document.getElementById('guia').textContent = "Busca Título: " + titulo + ", achou " + n + ".";		
+	// document.getElementById('guia').textContent = "Busca Título: " + titulo + ", achou " + n + ".";
+	document.getElementById('filtro').textContent = "Busca Título: " + titulo;
+	document.getElementById('conta').textContent = contaPrint();
 }
 
 function buscaChave(){
