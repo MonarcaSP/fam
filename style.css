@@ -172,7 +172,7 @@ button:hover{
 	border-radius: 5px;	
 	overflow: hidden;	
 	/* width: 267px; 149 + 1,78 */
-	height: 211px;	
+	height: 422px;	
 	position: relative;
 	cursor: pointer;
 	border: 2px solid #3E2C41;
@@ -196,8 +196,8 @@ button:hover{
 }
 
 .moldura{
-	width: 150px;
-	height: 211px;		
+	width: 300px;
+	height: 422px;		
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -206,7 +206,7 @@ button:hover{
 }
 
 .selos{
-	width: 150px;
+	width: 300px;
 	height: 95px;	
 	display: flex;
 	flex-direction: column;
@@ -352,8 +352,8 @@ img#logo{
 
 img{	
 	/* max-width: 265px; */
-	width: 150px; /*1,78*/
-	height: 211px;
+	width: 300px; /*1,78*/
+	height: 422px;
 	/* max-height: 149px;	 */
 	/* border-radius: 5px; */
 	/* border-bottom: 30px solid black; //Usar para demais status */
