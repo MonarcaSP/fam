@@ -259,7 +259,7 @@ function abreImagens(print){
     }
 	
 	// htm += "<hr>"
-	htm += "<p class='footer'>::  Desenvolvido por MSP  ::  nov/2021  ::  versão 3.52 ::</p>"
+	htm += "<p class='footer'>::  Desenvolvido por MSP  ::  nov/2021  ::  versão 3.53 ::</p>"
 	let destino = document.getElementById("resultado")	
 	destino.innerHTML = htm;	
 	// document.body.innerHTML += htm;
